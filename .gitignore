@@ -1,2 +1,103 @@
-sign_language_model.pth
+# Node modules and npm logs
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# React Native
+*.expo/
+.expo/
+.expo-shared/
+*.DS_Store
+*.idea/
+*.vscode/
+*.log
+
+# Android / iOS builds (in case using Expo eject or native)
+android/
+ios/
+*.keystore
+
+# TypeScript
+*.tsbuildinfo
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.env
+.venv/
+venv/
+ENV/
+*.log
+
+# Flask server
+instance/
+*.sqlite3
+
+# Python notebooks and metadata
+.ipynb_checkpoints/
+*.ipynb
+
+# AI / ML models
+*.pth
+*.pkl
+*.h5
+*.model
+*.pb
+
+# Video & media files (common large types)
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
 *.zip
+
+# OS files
+Thumbs.db
+ehthumbs.db
+.DS_Store
+Icon?
+.Spotlight-V100
+.Trashes
+
+# Misc
+*.bak
+*.swp
+*.swo
+*.tmp
+
+# VS Code
+.vscode/
+
+# MacOS Finder metadata
+.AppleDouble
+.LSOverride
+
+# Git ignore backups
+*.orig
+
+# Temporary files
+*.cache
+*.tmp
+
+# Coverage reports
+htmlcov/
+.coverage
+.tox/
+.cache/
+.pytest_cache/
+
+# Git filter backup (if used)
+.git-rewrite/
+
+# Exclude sensitive files manually
+sign_language_model.pth
+Example video.zip
