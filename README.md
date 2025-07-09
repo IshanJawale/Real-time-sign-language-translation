@@ -1,6 +1,6 @@
 # Real-time-sign-language-translation
 
-[Watch Demo Video](https://youtube.com/shorts/O0ovKKJHVVg)
+Watch the demo video here: [Watch Demo Video](https://youtube.com/shorts/O0ovKKJHVVg)
 
 # Cloudinary Video Manager
 
@@ -58,4 +58,3 @@ Your videos will be stored in the `temp_videos` folder in the server directory.
 
 - Change the check interval by modifying the `seconds` parameter in `scheduler.add_job`
 - Adjust the maximum number of videos to retrieve by changing the `max_results` parameter in `cloudinary.api.resources` 
->>>>>>> abc816c (First commit)
