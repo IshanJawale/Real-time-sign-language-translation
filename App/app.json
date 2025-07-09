@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "Sign Language Translator",
+    "slug": "sign-language-translator",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.snackc93bdb90b4d04a81ad4164a5593855fd"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "RECORD_AUDIO",
+        "RECORD_AUDIO"
+      ],
+      "package": "com.anonymous.snackc93bdb90b4d04a81ad4164a5593855fd"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "description": "An app that translates between sign language and text"
+  }
+}
