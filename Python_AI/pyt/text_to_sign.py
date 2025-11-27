@@ -49,7 +49,6 @@ def match_sentence_to_videos(sentence, label_map):
             raise ValueError(f"❌ No matching label found for word/phrase: '{words[idx]}'")
     return matched_labels
 
-# Initialize MediaPipe for hand tracking
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(min_detection_confidence=0.5, min_tracking_confidence=0.5)
 
@@ -95,21 +94,17 @@ def generate_sentence_video(sentence, dataset_path):
 
     video_paths = []
     for _, path in matched:
-        # Assume hand movement occurs from frame 10 to 90 (just as an example)
         start_frame = 10
         end_frame = 90
 
-        # Trim video based on hand movement
         temp_output = "temp_trimmed_video.mov"
         trim_video_with_hands(path, start_frame, end_frame, temp_output)
         video_paths.append(temp_output)
 
-    # Merge the trimmed video clips
     final_clip = concatenate_videoclips([VideoFileClip(vp) for vp in video_paths], method="compose")
     final_clip.write_videofile("output_sentence.mov", codec="libx264", fps=24, threads=4, preset='ultrafast')
     print(f"✅ Final video saved to: output_sentence.mov")
 
-# Example usage
 if __name__ == "__main__":
     dataset_path = r"../Example_videos"
     sentence = "how are you"

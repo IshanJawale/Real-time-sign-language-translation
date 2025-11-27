@@ -5,10 +5,8 @@ from torchvision import transforms
 from decord import VideoReader, cpu
 import numpy as np
 
-# Set device
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# Fast transform (batch-friendly)
 transform = transforms.Compose([
     transforms.Resize((112, 112)),
 ])
@@ -28,10 +26,8 @@ def load_video_fast(video_path, max_frames=16):
     return frames.unsqueeze(0)  # (1, C, T, H, W)
 
 def predict_sign_video_top3(video_path, model_path, label_encoder_path, max_frames=16):
-    # Load label encoder
     le = joblib.load(label_encoder_path)
 
-    # Load model
     weights = R3D_18_Weights.DEFAULT
     model = r3d_18(weights=weights)
     model.fc = torch.nn.Linear(model.fc.in_features, len(le.classes_))
@@ -41,13 +37,11 @@ def predict_sign_video_top3(video_path, model_path, label_encoder_path, max_fram
     if device.type == 'cuda':
         model = model.half()
 
-    # Load and preprocess video
     video = load_video_fast(video_path, max_frames)
     video = video.to(device)
     if device.type == 'cuda':
         video = video.half()
 
-    # Predict
     with torch.no_grad():
         outputs = model(video)
         probabilities = torch.nn.functional.softmax(outputs, dim=1)[0]
@@ -61,7 +55,6 @@ def predict_sign_video_top3(video_path, model_path, label_encoder_path, max_fram
 
     return le.inverse_transform([top_indices[0].item()])[0]
 
-# Example usage
 if __name__ == "__main__":
     test_video = "test.mov"
     model_path = "sign_language_model.pth"

@@ -19,10 +19,8 @@ def load_video_ultra_fast(video_path, max_frames=16, resize=(112, 112)):
     return video.unsqueeze(0)  # (1, C, T, H, W)
 
 def predict_sign_video_ultrafast(video_path, model_path, label_encoder_path, max_frames=16):
-    # Load label encoder
     le = joblib.load(label_encoder_path)
 
-    # Load lightweight model
     weights = MC3_18_Weights.DEFAULT
     model = mc3_18(weights=weights)
     model.fc = torch.nn.Linear(model.fc.in_features, len(le.classes_))
@@ -32,7 +30,6 @@ def predict_sign_video_ultrafast(video_path, model_path, label_encoder_path, max
     if device.type == 'cuda':
         model = model.half()
 
-    # Preprocess video
     video = load_video_ultra_fast(video_path, max_frames)
     video = video.to(device)
     if device.type == 'cuda':
@@ -51,7 +48,6 @@ def predict_sign_video_ultrafast(video_path, model_path, label_encoder_path, max
 
     return le.inverse_transform([top_indices[0].item()])[0]
 
-# Example usage
 if __name__ == "__main__":
     test_video = "test.mov"
     model_path = "sign_language_model.pth"

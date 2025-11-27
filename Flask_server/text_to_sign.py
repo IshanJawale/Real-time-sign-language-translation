@@ -48,7 +48,6 @@ def merge_videos_opencv(video_paths, output_path):
         print("❌ No video paths to merge.")
         return
 
-    # Create the directory for output_path if it doesn't exist
     output_dir = os.path.dirname(output_path)
     if output_dir and not os.path.exists(output_dir):
         os.makedirs(output_dir, exist_ok=True)
@@ -93,7 +92,6 @@ def generate_sentence_video(sentence, dataset_path, output_path):
     video_paths = [path for _, path in matched]
     merge_videos_opencv(video_paths, output_path)
 
-# Example usage
 if __name__ == "__main__":
     dataset_path = "Python_AI/Example_videos"
     output_path = "temp_uploads/output_sentence.mp4"
